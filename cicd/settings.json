@@ -1,0 +1,17 @@
+{
+  "types": [
+    "feat",
+    "fix",
+    "chore",
+    "docs",
+    "style",
+    "refactor",
+    "perf",
+    "test",
+    "ci"
+  ],
+  "requireScope": false,
+  "requireDescription": false,
+  "subjectMaxLength": 72,
+  "bodyLineMaxLength": 100
+}
