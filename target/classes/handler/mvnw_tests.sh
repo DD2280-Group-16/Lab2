@@ -1,4 +1,4 @@
-BRANCH ="$arg1"
+BRANCH="$1"
 
 if [ -z "$BRANCH" ]; then
     echo "No branch given"
