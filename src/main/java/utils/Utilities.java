@@ -13,7 +13,7 @@ public class Utilities {
             return "bash"; // Linux/macOS
         }
 
-        // Vanliga Git Bash paths
+        // Usual windows paths
         String[] candidates = {
             "C:\\Program Files\\Git\\bin\\bash.exe",
             "C:\\Program Files (x86)\\Git\\bin\\bash.exe"

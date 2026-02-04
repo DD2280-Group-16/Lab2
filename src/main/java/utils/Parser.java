@@ -28,13 +28,4 @@ public class Parser {
     public Payload getPayload() {
         return payload;
     }
-
-    // public static void main(String[] args) throws Exception {
-    //     String json = Files.readString(Path.of("src/main/java/handler/testJSONs/test.json"));
-
-    //     Parser parser = new Parser(json);
-
-    //     System.out.println(parser.getBranch());
-    //     System.out.println(parser.getRepoName());
-    // }
 }

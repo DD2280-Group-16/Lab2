@@ -28,15 +28,33 @@ public class ContinuousIntegrationServer extends AbstractHandler
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         //baseRequest.setHandled(true);
+        /*
+            Read the requests body
+        */
         String body = request.getReader().lines().collect(Collectors.joining("\n"));
+        /*
+            Parsers the body for key information
+        */
         Parser parser = new Parser(body);
+        /*
+            Gets the branch name for use in the handlers
+        */
         String branch = parser.getBranch();
-        System.out.println(target);
+        /*
+            Switches between different webhooks.
+            Will fill up with more when we know that they are :)
+        */
         switch (target) {
             case "/test":
                 
                 HandleTestRequests tr = new HandleTestRequests(branch);
-                tr.handleTest();
+                String notice = tr.handleTest();
+                /*
+                    Here we can handle the notification, for example:
+                    String buildResult = tr.getBuildResult() // Not implemented :)
+                    response.getWriter().println(buildResult);
+                */
+               response.getWriter().println(notice);
                 break;
             case "/pull-request":;
                 HandlePullRequests pr = new HandlePullRequests(branch);
@@ -56,14 +74,9 @@ public class ContinuousIntegrationServer extends AbstractHandler
     // used to start the CI server in command line
     public static void main(String[] args) throws Exception
     {
-        // HandlePullRequests pr = new HandlePullRequests("feat/implement-payload-manager");
-        // pr.handleBuild();
-        // HandleTestRequests tr = new HandleTestRequests("feat/implement-payload-manager");
-        // tr.handleTest();
         Server server = new Server(8080);
         server.setHandler(new ContinuousIntegrationServer()); 
         server.start();
         server.join();
-        
     }
 }

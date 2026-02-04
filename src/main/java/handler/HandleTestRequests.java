@@ -6,15 +6,17 @@ public class HandleTestRequests {
         this.branch = branch;
     }
 
-    public void handleTest() {
+    public String handleTest() {
         ScriptHandler scriptHandler = new ScriptHandler();
 
         try {
             String root = System.getProperty("user.dir");
             String script = root + "\\src\\main\\java\\handler\\mvnw_tests.sh";
-            scriptHandler.runScript(script, this.branch);
+            String testResult = scriptHandler.runScript(script, this.branch);
+            return testResult;
         } catch (Exception e) {
             System.out.print(e);
+            return e.toString();
         }
     }
 }
