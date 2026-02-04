@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestingStuff" time="0.035" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="21"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\selin\Documents\CDATEMAST\DD2480\Lab2\target\test-classes;C:\Users\selin\Documents\CDATEMAST\DD2480\Lab2\target\classes;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\selin\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\selin\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\selin\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\selin\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;C:\Users\selin\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.16.0\jackson-core-2.16.0.jar;C:\Users\selin\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.16.0\jackson-databind-2.16.0.jar;C:\Users\selin\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.16.0\jackson-annotations-2.16.0.jar;C:\Users\selin\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-server\9.4.54.v20240208\jetty-server-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-http\9.4.54.v20240208\jetty-http-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-util\9.4.54.v20240208\jetty-util-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-io\9.4.54.v20240208\jetty-io-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-servlet\9.4.54.v20240208\jetty-servlet-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-security\9.4.54.v20240208\jetty-security-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-util-ajax\9.4.54.v20240208\jetty-util-ajax-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\tools\jackson\core\jackson-databind\3.0.3\jackson-databind-3.0.3.jar;C:\Users\selin\.m2\repository\tools\jackson\core\jackson-core\3.0.3\jackson-core-3.0.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Budapest"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="21"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="SE"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21.0.2\bin"/>
+    <property name="sun.java.command" value="C:\Users\selin\AppData\Local\Temp\surefire2560575014084920523\surefirebooter-20260204084655539_3.jar C:\Users\selin\AppData\Local\Temp\surefire2560575014084920523 2026-02-04T08-46-55_438-jvmRun1 surefire-20260204084655539_1tmp surefire_0-20260204084655539_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\selin\Documents\CDATEMAST\DD2480\Lab2\target\test-classes;C:\Users\selin\Documents\CDATEMAST\DD2480\Lab2\target\classes;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.0\junit-jupiter-5.10.0.jar;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.0\junit-jupiter-api-5.10.0.jar;C:\Users\selin\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\selin\.m2\repository\org\junit\platform\junit-platform-commons\1.10.0\junit-platform-commons-1.10.0.jar;C:\Users\selin\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.0\junit-jupiter-params-5.10.0.jar;C:\Users\selin\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.0\junit-jupiter-engine-5.10.0.jar;C:\Users\selin\.m2\repository\org\junit\platform\junit-platform-engine\1.10.0\junit-platform-engine-1.10.0.jar;C:\Users\selin\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.16.0\jackson-core-2.16.0.jar;C:\Users\selin\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.16.0\jackson-databind-2.16.0.jar;C:\Users\selin\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.16.0\jackson-annotations-2.16.0.jar;C:\Users\selin\.m2\repository\javax\servlet\javax.servlet-api\4.0.1\javax.servlet-api-4.0.1.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-server\9.4.54.v20240208\jetty-server-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-http\9.4.54.v20240208\jetty-http-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-util\9.4.54.v20240208\jetty-util-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-io\9.4.54.v20240208\jetty-io-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-servlet\9.4.54.v20240208\jetty-servlet-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-security\9.4.54.v20240208\jetty-security-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\org\eclipse\jetty\jetty-util-ajax\9.4.54.v20240208\jetty-util-ajax-9.4.54.v20240208.jar;C:\Users\selin\.m2\repository\tools\jackson\core\jackson-databind\3.0.3\jackson-databind-3.0.3.jar;C:\Users\selin\.m2\repository\tools\jackson\core\jackson-core\3.0.3\jackson-core-3.0.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\selin"/>
+    <property name="user.language" value="sv"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-01-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-21.0.2"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\selin\Documents\CDATEMAST\DD2480\Lab2"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\selin\AppData\Local\Temp\surefire2560575014084920523\surefirebooter-20260204084655539_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="21.0.2+13-58"/>
+    <property name="user.name" value="selin"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\selin\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\selin\AppData\Local\Temp\"/>
+    <property name="java.version" value="21.0.2"/>
+    <property name="user.dir" value="C:\Users\selin\Documents\CDATEMAST\DD2480\Lab2"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21.0.2\bin;C:\windows\Sun\Java\bin;C:\windows\system32;C:\windows;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\selin\bin;C:\Users\selin\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;C:\Users\selin\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Program Files\Meta Horizon\Support\oculus-runtime;C:\Program Files\Java\jdk-21.0.2\bin;C:\Program Files\Java\javafx-sdk-21.0.2;C:\ProgramData\Oracle\Java\javapath;C:\program files (x86)\embarcadero\studio\22.0\bin;C:\users\public\documents\embarcadero\studio\22.0\bpl;C:\program files (x86)\embarcadero\studio\22.0\bin64;C:\users\public\documents\embarcadero\studio\22.0\bpl\win64;C:\program files (x86)\embarcadero\studio\21.0\bin;C:\users\public\documents\embarcadero\studio\21.0\bpl;C:\program files (x86)\embarcadero\studio\21.0\bin64;C:\users\public\documents\embarcadero\studio\21.0\bpl\win64;C:\windows\system32;C:\windows;C:\windows\system32\wbem;C:\windows\system32\windowspowershell\v1.0;C:\windows\system32\openssh;C:\program files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files\Microsoft SQL Server\150\Tools\Binn;C:\Program Files\Git\cmd;C:\Program Files\Go\bin;C:\Program Files\Java\jdk-21.0.2\bin;C:\Program Files\Java\scripts;C:\Program Files\swipl\bin;C:\Program Files\PuTTY;C:\Program Files\MATLAB\R2023b\bin;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\nodejs;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\PostgreSQL\17\bin;C:\php;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\Qt\Qt5.12.12\5.12.12\msvc2017_64;C:\Program Files\CMake\bin;C:\Users\selin\AppData\Local\Programs\Python\Python313\Scripts;C:\Users\selin\AppData\Local\Programs\Python\Python313;C:\Users\selin\AppData\Local\Microsoft\WindowsApps;C:\Users\selin\.dotnet\tools;C:\Users\selin\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\selin\AppData\Local\Programs\MiKTeX\miktex\bin\x64;C:\Users\selin\go\bin;C:\Program Files\Java\jdk-21.0.2\bin;C:\ghcup\bin;C:\Users\selin\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA 2024.2.1\bin;C:\Users\selin\AppData\Local\GitHubDesktop\bin;C:\Qt\Qt5.12.12\5.12.12\msvc2017_64;C:\Users\selin\.vscode\extensions\vscjava.vscode-java-debug-0.58.5\bundled\scripts\noConfigScripts;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="21.0.2+13-58"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="65.0"/>
+  </properties>
+  <testcase name="arbitraryTest" classname="TestingStuff" time="0.016"/>
+</testsuite>

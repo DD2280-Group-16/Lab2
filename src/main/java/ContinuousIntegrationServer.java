@@ -28,18 +28,18 @@ public class ContinuousIntegrationServer extends AbstractHandler
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
         //baseRequest.setHandled(true);
-
+        String body = request.getReader().lines().collect(Collectors.joining("\n"));
+        Parser parser = new Parser(body);
+        String branch = parser.getBranch();
         System.out.println(target);
         switch (target) {
             case "/test":
-                String body = request.getReader().lines().collect(Collectors.joining("\n"));
-                Parser parser = new Parser(body);
-                String branch = parser.getBranch();
-                HandleTestRequests tr = new HandleTestRequests("feat/implement-payload-manager");
+                
+                HandleTestRequests tr = new HandleTestRequests(branch);
                 tr.handleTest();
                 break;
-            case "/pull-request":
-                HandlePullRequests pr = new HandlePullRequests("target.branch");
+            case "/pull-request":;
+                HandlePullRequests pr = new HandlePullRequests(branch);
                 pr.handleBuild();
                 break;
             default:
