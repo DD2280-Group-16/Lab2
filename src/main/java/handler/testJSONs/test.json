@@ -1,0 +1,54 @@
+{
+  "ref": "refs/heads/feat/implement-payload-manager",
+  "before": "a1b2c3d4e5f60000000000000000000000000000",
+  "after": "f6e5d4c3b2a10000000000000000000000000000",
+  "repository": {
+    "id": 123456789,
+    "name": "example-repo",
+    "full_name": "my-org/example-repo",
+    "private": false,
+    "owner": {
+      "name": "my-org",
+      "email": "dev@my-org.com"
+    },
+    "html_url": "https://github.com/my-org/example-repo",
+    "default_branch": "main"
+  },
+  "pusher": {
+    "name": "johndoe",
+    "email": "johndoe@example.com"
+  },
+  "sender": {
+    "login": "johndoe",
+    "id": 987654321,
+    "type": "User"
+  },
+  "commits": [
+    {
+      "id": "f6e5d4c3b2a1",
+      "message": "Implement payload manager",
+      "timestamp": "2026-02-04T10:15:30Z",
+      "url": "https://github.com/my-org/example-repo/commit/f6e5d4c3b2a1",
+      "author": {
+        "name": "John Doe",
+        "email": "johndoe@example.com"
+      },
+      "added": [
+        "src/payload/PayloadManager.ts"
+      ],
+      "modified": [
+        "src/index.ts"
+      ],
+      "removed": []
+    }
+  ],
+  "head_commit": {
+    "id": "f6e5d4c3b2a1",
+    "message": "Implement payload manager",
+    "timestamp": "2026-02-04T10:15:30Z",
+    "author": {
+      "name": "John Doe",
+      "email": "johndoe@example.com"
+    }
+  }
+}
