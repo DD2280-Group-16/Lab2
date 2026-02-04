@@ -48,13 +48,12 @@ public class ContinuousIntegrationServer extends AbstractHandler
             case "/test":
                 
                 HandleTestRequests tr = new HandleTestRequests(branch);
-                String notice = tr.handleTest();
+                tr.handleTest();
                 /*
                     Here we can handle the notification, for example:
                     String buildResult = tr.getBuildResult() // Not implemented :)
                     response.getWriter().println(buildResult);
                 */
-               response.getWriter().println(notice);
                 break;
             case "/pull-request":;
                 HandlePullRequests pr = new HandlePullRequests(branch);

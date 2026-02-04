@@ -1,5 +1,8 @@
 package handler;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class HandlePullRequests {
     private final String branch;
     
@@ -12,9 +15,8 @@ public class HandlePullRequests {
         ScriptHandler scriptHandler = new ScriptHandler();
         
         try {
-            String root = System.getProperty("user.dir");
-            String script = root + "\\src\\main\\java\\handler\\git_build.sh";
-            scriptHandler.runScript(script, this.branch);
+            Path filePath = Paths.get(System.getProperty("user.dir"), "src", "main", "java", "handler", "git_build.sh");
+            scriptHandler.runScript(filePath.toString(), this.branch);
         } catch (Exception e) {
             System.out.print(e);
         }
