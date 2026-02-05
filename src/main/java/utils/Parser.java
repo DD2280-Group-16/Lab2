@@ -20,9 +20,10 @@ public class Parser {
     }
 
     public String getRepoName() {
-        return payload.getRepository() != null
-                ? payload.getRepository().getName()
-                : null;
+        if(payload.getRepository() == null) {
+            return null;
+        }
+        return payload.getRepository().getName();
     }
 
     public Payload getPayload() {

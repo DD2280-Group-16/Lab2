@@ -19,7 +19,7 @@ public class ScriptHandler {
             String line;
             while((line = reader.readLine()) != null) {
                 // sb.append(line).append("\n");
-                //System.out.println(line);
+                System.out.println(line);
             }
         }
         int exitCode = process.waitFor();
