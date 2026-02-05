@@ -5,15 +5,21 @@ import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * Utilities class for different utility functions.
+ */
 public class Utilities {
-    
+    /**
+     * Function that finds the path to bash on different file structures.
+     * Should work onLinux, mac and windows
+     */
     public String findBash() throws Exception {
         boolean isWindows = System.getProperty("os.name").toLowerCase().contains("win");
         if (!isWindows) {
             return "bash"; // Linux/macOS
         }
 
-        // Usual windows paths
+        // Usual windows paths, add more if needed
         String[] candidates = {
             "C:\\Program Files\\Git\\bin\\bash.exe",
             "C:\\Program Files (x86)\\Git\\bin\\bash.exe"
@@ -25,18 +31,5 @@ public class Utilities {
 
         throw new IllegalStateException("Bash not found on Windows");
     }
-
-    public Path findProjectRoot() throws Exception {
-        Process p = new ProcessBuilder("git", "rev-parse", "--show-toplevel").start();
-        try (BufferedReader r = new BufferedReader(
-                new InputStreamReader(p.getInputStream()))) {
-            String line = r.readLine();
-            if (line == null) throw new IllegalStateException("git rev-parse returned nothing");
-
-            line = line.trim(); 
-
-            return Path.of(line);
-        }
-    }
-
+    
 }

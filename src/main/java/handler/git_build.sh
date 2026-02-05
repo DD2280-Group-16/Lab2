@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Script that pulls the latest of the current branch and compiles the code
 set -e
 
 BRANCH="$1"

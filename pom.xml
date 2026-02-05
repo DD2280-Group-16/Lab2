@@ -36,11 +36,12 @@
             <version>2.16.0</version>
         </dependency>
 
-        <!-- Servlet API (javax.*) -->
+        <!-- Jakarta -->
+        <!-- Source: https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
             <scope>provided</scope>
         </dependency>
 
@@ -48,14 +49,13 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            
-            <version>9.4.54.v20240208</version>
+            <version>11.0.20</version>
         </dependency>
 
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>9.4.54.v20240208</version>
+            <version>11.0.20</version>
         </dependency>
 
         <!-- Source: https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
@@ -64,6 +64,11 @@
             <artifactId>jackson-databind</artifactId>
             <version>3.0.3</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20240205</version>
         </dependency>
     </dependencies>
 

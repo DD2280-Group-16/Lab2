@@ -4,21 +4,27 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import utils.Utilities;
+
+/**
+ * Class that handles script running using shell scripts in BASH.
+ * Uses ProcessBuilder to create a new process running the given script.
+ * Can be used to grab the output to be sent to the Notify Handler.
+ */
 public class ScriptHandler {
     public void runScript(String script, String branch) throws Exception {
-        //String bash = "C:\\Program Files\\Git\\bin\\bash.exe";
         Utilities utils = new Utilities();
         String bash = utils.findBash();
         ProcessBuilder pb = new ProcessBuilder(bash, script, branch);
-        // StringBuilder sb = new StringBuilder();
         pb.redirectErrorStream(true);
 
         Process process = pb.start();
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
             String line;
+            /*
+                Prints the output for now.
+            */
             while((line = reader.readLine()) != null) {
-                // sb.append(line).append("\n");
                 System.out.println(line);
             }
         }
@@ -26,7 +32,5 @@ public class ScriptHandler {
         if(exitCode != 0) {
             throw new RuntimeException("Script failed with exit code: " + exitCode);
         }
-        // String output = sb.toString();
-        // return output;
     }
 }

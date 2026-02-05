@@ -1,3 +1,6 @@
+#!/usr/bin/env bash
+# Script that pulls the latest of the current branch nad runs all the tests
+set -e
 BRANCH="$1"
 
 if [ -z "$BRANCH" ]; then
