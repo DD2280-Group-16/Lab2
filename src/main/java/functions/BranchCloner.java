@@ -9,7 +9,7 @@ public class BranchCloner {
      * @param branch The branch to be cloned
      * @return Returns true if the cloning was successful, false otherwise
      */
-    private boolean cloneBranch(String url, String branch, String directory) {
+    private boolean cloneBranch(String url, String branch) {
         try {
             
             System.out.println("Cloning branch: " + branch);
