@@ -8,11 +8,31 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
+import scripts.CompileScript;
+import scripts.ScriptResult;
+import scripts.TestScript;
+
 /**
  * Skeleton of a ContinuousIntegrationServer which acts as webhook
  * See the Jetty documentation for API documentation of those classes.
  */
 public class ContinuousIntegrationServer extends AbstractHandler {
+
+  /**
+   * Compiles the project at projectPath. Returns the result (exit code + output).
+   */
+  public ScriptResult handleCompilation(String projectPath) throws IOException, InterruptedException {
+    return new CompileScript(projectPath).run();
+  }
+
+  /**
+   * Runs tests on the project at projectPath. Returns the result (exit code + output).
+   */
+  public ScriptResult handleTests(String projectPath) throws IOException, InterruptedException {
+    return new TestScript(projectPath).run();
+  }
+
+  @Override
   public void handle(String target,
       Request baseRequest,
       HttpServletRequest request,
