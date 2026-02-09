@@ -1,29 +1,39 @@
 package functions;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public class BranchCloner {
+    
+    private final ProcessRunner runner;
+    private Path dir;
+    public BranchCloner(ProcessRunner runner) {
+            this.runner = runner;
+        }
     /**
-     * Function that clones a single branch.
-     * It is my understanding that this will return false if the repo already exists.
-     * This can be handled by the BranchPuller class
+     * Function that clones a single branch into a temporary directory which will be removed after testing/building are complete.
      * @param url The git url the branch is clones from
      * @param branch The branch to be cloned
      * @return Returns true if the cloning was successful, false otherwise
      */
-    private boolean cloneBranch(String url, String branch) {
+    public boolean cloneBranch(String url, String branch) {
+        if (url == null || url.isEmpty() || branch == null || branch.isEmpty()) {
+            return false;
+        }
+        dir = null;
         try {
-            
-            System.out.println("Cloning branch: " + branch);
-            ProcessBuilder pb = new ProcessBuilder("git", "clone", "-b", branch, "--single-branch", url);
-
-            pb.inheritIO();
-
-            Process process = pb.start();
-            int exitCode = process.waitFor();
+            dir = Files.createTempDirectory("branch-clone-");
+            System.out.println("Cloning branch: " + branch + " to temporary directory: " + dir);
+            int exitCode = runner.run(dir ,"git", "clone", "-b", branch, "--single-branch", url, ".");
 
             return exitCode == 0;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public Path getTempDir() {
+        return this.dir;
     }
 }
