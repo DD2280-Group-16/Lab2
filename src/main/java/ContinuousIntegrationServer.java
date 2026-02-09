@@ -2,15 +2,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.ServletException;
 
+import java.io.File;
 import java.io.IOException;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
-import scripts.CompileScript;
-import scripts.ScriptResult;
-import scripts.TestScript;
+import scripts.Script;
 
 /**
  * Skeleton of a ContinuousIntegrationServer which acts as webhook
@@ -18,19 +17,6 @@ import scripts.TestScript;
  */
 public class ContinuousIntegrationServer extends AbstractHandler {
 
-  /**
-   * Compiles the project at projectPath. Returns the result (exit code + output).
-   */
-  public ScriptResult handleCompilation(String projectPath) throws IOException, InterruptedException {
-    return new CompileScript(projectPath).run();
-  }
-
-  /**
-   * Runs tests on the project at projectPath. Returns the result (exit code + output).
-   */
-  public ScriptResult handleTests(String projectPath) throws IOException, InterruptedException {
-    return new TestScript(projectPath).run();
-  }
 
   @Override
   public void handle(String target,
