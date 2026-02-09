@@ -17,10 +17,12 @@ public class PayloadParser {
      * Parses the JSON body of an HttpServletRequest into a JSONObject.
      */
     public void parse(HttpServletRequest request) throws IOException {
-        // The JSONTokener can consume the input stream directly
-        // which is more efficient than reading it into a String first.
+        // The JSONTokener to break down the request.
         JSONTokener tokener = new JSONTokener(request.getInputStream());
         JSONObject payload = new JSONObject(tokener);
+        if (!payload.has("ref")) {
+            throw new IllegalArgumentException("Missing required field: ref");
+        }
         if (payload.has("repository")) {
             JSONObject repo = payload.getJSONObject("repository");
             setSshUrl(repo.getString("ssh_url"));
