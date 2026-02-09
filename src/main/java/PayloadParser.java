@@ -9,6 +9,9 @@ import jakarta.servlet.http.HttpServletRequest;
 public class PayloadParser {
 
     String sshUrl;
+    String repoName;
+    String commitHash;
+    String branch;
 
     /**
      * Parses the JSON body of an HttpServletRequest into a JSONObject.
@@ -20,12 +23,27 @@ public class PayloadParser {
         JSONObject payload = new JSONObject(tokener);
         if (payload.has("repository")) {
             JSONObject repo = payload.getJSONObject("repository");
-            set_sshUrl(repo.getString("ssh_url"));
+            setSshUrl(repo.getString("ssh_url"));
+            setRepoName(repo.getString("full_name"));
+            setCommitHash(payload.getString("after"));
+            setBranch(payload.getString("ref"));
         }
 
     }
 
-    public void set_sshUrl(String sshUrl){
+
+    // Setters
+    public void setSshUrl(String sshUrl){
         this.sshUrl = sshUrl;
+    }
+    public void setRepoName(String repoName){
+        this.repoName = repoName;
+    }
+    public void setCommitHash(String commitHash){
+        this.commitHash = commitHash;
+    }
+    public void setBranch(String ref){
+        String branchName = ref.replace("refs/heads/", "");
+        this.branch = branchName;
     }
 }

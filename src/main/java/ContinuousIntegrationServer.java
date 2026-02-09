@@ -33,6 +33,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
                 info.parse(request);
                 
                 System.out.println(info.sshUrl);
+                System.out.println(info.repoName);
+                System.out.println(info.commitHash);
+                System.out.println(info.branch);
+
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("Payload received successfully");
 
