@@ -4,7 +4,6 @@ import java.io.IOException;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-import org.json.JSONObject;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,16 +29,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         if ("POST".equalsIgnoreCase(request.getMethod())) {
             try {
                 // Parse using our new utility
-                JSONObject payload = PayloadParser.parse(request);
-
-                // We use optString or getString to get the values
-                if (payload.has("repository")) {
-                    JSONObject repo = payload.getJSONObject("repository");
-                    String sshUrl = repo.getString("ssh_url");
-
-                    System.out.println("SSH URL: " + sshUrl);
-                }
-
+                PayloadParser info = new PayloadParser();
+                info.parse(request);
+                
+                System.out.println(info.sshUrl);
                 response.setStatus(HttpServletResponse.SC_OK);
                 response.getWriter().println("Payload received successfully");
 
