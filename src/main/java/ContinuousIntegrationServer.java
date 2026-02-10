@@ -9,7 +9,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.net.http.HttpClient;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 import org.eclipse.jetty.server.Request;
@@ -47,46 +46,9 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         System.err.println("Error: " + e.getMessage());
         response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
       }
-    }
-
-    // We use GET for persistent history
-    else if ("GET".equalsIgnoreCase(request.getMethod())) {
-      File historyDir = new File("build_history");
-
-      // Render the logs for `our-website/builds/*`
-      if (target.startsWith("/builds/")) {
-        String commitHash = target.replace("/builds/", "");
-        // Get the logs for that commit
-        File logFile = new File(historyDir, commitHash + "/log.txt");
-
-        if (logFile.exists()) {
-          response.getWriter().println("<h1>Build Log for " + commitHash + "</h1>");
-          response.getWriter().println("<pre>"); // <pre> preserves the log formatting
-          response.getWriter().println(Files.readString(logFile.toPath()));
-          response.getWriter().println("</pre>");
-          response.getWriter().println("<br><a href='/'>Back to List</a>");
-        } else {
-          response.getWriter().println("<h1>404 - Log Not Found</h1>");
-          response.getWriter().println("<p>Build " + commitHash + " does not exist</p>");
-        }
-      } else {
-        // Render the "homepage"
-        response.getWriter().println("<h1>Build History</h1>");
-
-        // Render the list of builds
-        File[] builds = historyDir.listFiles(File::isDirectory);
-        response.getWriter().println("<ul>");
-        if (builds != null) {
-          for (File build : builds) {
-            String hash = build.getName();
-            // Create a link to /builds/{hash}
-            response
-                .getWriter()
-                .println("<li><a href='/builds/" + hash + "'>Build " + hash + "</a></li>");
-          }
-        }
-        response.getWriter().println("</ul>");
-      }
+    } else if ("GET".equalsIgnoreCase(request.getMethod())) {
+      // TODO: implement P7
+      response.getWriter().println("<h>Build History</h>");
     }
   }
 
