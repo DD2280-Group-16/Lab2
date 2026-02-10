@@ -65,7 +65,7 @@ Run the main class `ContinuousIntegrationServer` from your IDE, or with maven:
 The server listens on port 8080. 
 You can then push files to github and the server will update the commit status according to the tests.
 
-To get the build history you can visit http://localhost:8080/builds or
+To get the build history you can visit http://localhost:8080/builds
 
 ## Statement of contributions
 
