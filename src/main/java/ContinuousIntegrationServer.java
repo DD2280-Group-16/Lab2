@@ -25,8 +25,6 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     System.out.println(target);
 
     // here you do all the continuous integration tasks
-    // for example
-    // 1st clone your repository
     // 2nd compile the code
 
     response.getWriter().println("CI job done");
