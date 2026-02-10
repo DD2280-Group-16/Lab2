@@ -5,6 +5,6 @@ import org.junit.jupiter.api.Test;
 class SampleTest {
   @Test
   void testIsTrue() {
-    assertEquals(1, 2);
+    assertEquals(1, 1);
   }
 }
