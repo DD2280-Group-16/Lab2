@@ -14,7 +14,7 @@ class GitHubClientTest {
     // We pass null because createJsonBody doesn't need the network client
     GitHubClient client = new GitHubClient(null, "fake_token");
 
-    JSONObject json = client.createJsonBody(true);
+    JSONObject json = client.createJsonBody(true, "fake_url");
 
     assertEquals("success", json.getString("state"));
     assertEquals("Build passed", json.getString("description"));
@@ -24,7 +24,7 @@ class GitHubClientTest {
   public void testJsonFailure() {
     GitHubClient client = new GitHubClient(null, "fake_token");
 
-    JSONObject json = client.createJsonBody(false);
+    JSONObject json = client.createJsonBody(false, "fake_url");
 
     assertEquals("failure", json.getString("state"));
     assertEquals("Build failed", json.getString("description"));
@@ -40,7 +40,7 @@ class GitHubClientTest {
 
     GitHubClient client = new GitHubClient(mockClient, "fake_token");
 
-    boolean res = client.updateCommitStatus("repoName", "123", true);
+    boolean res = client.notify("repoName", "123", true, "fake_url");
     assertTrue(res);
   }
 
@@ -54,7 +54,7 @@ class GitHubClientTest {
 
     GitHubClient client = new GitHubClient(mockClient, "fake_token");
 
-    boolean res = client.updateCommitStatus("repoName", "123", false);
+    boolean res = client.notify("repoName", "123", false, "fake_url");
     assertFalse(res);
   }
 
@@ -67,7 +67,7 @@ class GitHubClientTest {
 
     GitHubClient client = new GitHubClient(mockClient, "fake_token");
 
-    boolean res = client.updateCommitStatus("repoName", "123", false);
+    boolean res = client.notify("repoName", "123", false, "fake_url");
     assertFalse(res);
   }
 }
