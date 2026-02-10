@@ -13,10 +13,10 @@ public class GitHubClient {
     this.accessToken = accessToken;
   }
 
-  public boolean updateCommitStatus(String repoName, String sha, boolean success) {
+  public boolean notify(String repoName, String sha, boolean success, String targetUrl) {
     String url = "https://api.github.com/repos/" + repoName + "/statuses/" + sha;
 
-    JSONObject body = createJsonBody(success);
+    JSONObject body = createJsonBody(success, targetUrl);
 
     try {
       HttpRequest request =
@@ -40,7 +40,7 @@ public class GitHubClient {
     }
   }
 
-  public JSONObject createJsonBody(boolean success) {
+  public JSONObject createJsonBody(boolean success, String targetUrl) {
     String state = success ? "success" : "failure";
     String desc = success ? "Build passed" : "Build failed";
     JSONObject body = new JSONObject();
@@ -48,6 +48,7 @@ public class GitHubClient {
     body.put("state", state);
     body.put("description", desc);
     body.put("context", "continous-integration/java-server");
+    body.put("target_url", targetUrl);
 
     return body;
   }
