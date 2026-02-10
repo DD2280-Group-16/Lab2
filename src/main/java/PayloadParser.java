@@ -1,51 +1,35 @@
-import java.io.IOException;
-
+import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import jakarta.servlet.http.HttpServletRequest;
-
 
 public class PayloadParser {
+  public final String sshUrl;
+  public final String repoName;
+  public final String commitHash;
+  public final String branch;
 
-    String sshUrl;
-    String repoName;
-    String commitHash;
-    String branch;
+  /**
+   * Constructor parses the JSON string immediately.
+   *
+   * @param payload The raw JSON string from the request body.
+   * @throws JSONException if required fields are missing.
+   */
+  public PayloadParser(String payload) {
+    JSONObject json = new JSONObject(payload);
 
-    /**
-     * Parses the JSON body of an HttpServletRequest into a JSONObject.
-     */
-    public void parse(HttpServletRequest request) throws IOException {
-        // The JSONTokener to break down the request.
-        JSONTokener tokener = new JSONTokener(request.getInputStream());
-        JSONObject payload = new JSONObject(tokener);
-        if (!payload.has("ref")) {
-            throw new IllegalArgumentException("Missing required field: ref");
-        }
-        if (payload.has("repository")) {
-            JSONObject repo = payload.getJSONObject("repository");
-            setSshUrl(repo.getString("ssh_url"));
-            setRepoName(repo.getString("full_name"));
-            setCommitHash(payload.getString("after"));
-            setBranch(payload.getString("ref"));
-        }
-
+    if (!json.has("ref")) {
+      throw new IllegalArgumentException("Invalid payload: missing 'ref' field");
     }
 
+    this.branch = json.getString("ref").replace("refs/heads/", "");
+    this.commitHash = json.getString("after");
 
-    // Setters
-    public void setSshUrl(String sshUrl){
-        this.sshUrl = sshUrl;
+    if (json.has("repository")) {
+      JSONObject repo = json.getJSONObject("repository");
+      this.sshUrl = repo.getString("ssh_url");
+      this.repoName = repo.getString("full_name");
+    } else {
+      throw new IllegalArgumentException("Invalid payload: missing 'repository' object");
     }
-    public void setRepoName(String repoName){
-        this.repoName = repoName;
-    }
-    public void setCommitHash(String commitHash){
-        this.commitHash = commitHash;
-    }
-    public void setBranch(String ref){
-        String branchName = ref.replace("refs/heads/", "");
-        this.branch = branchName;
-    }
+  }
 }
+
