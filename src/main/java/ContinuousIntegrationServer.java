@@ -48,7 +48,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
       }
     } else if ("GET".equalsIgnoreCase(request.getMethod())) {
       // TODO: implement P7
-      response.getWriter().println("<h>Build History</h>");
+      response.getWriter().println("<h1>Build History</h1>");
     }
   }
 
