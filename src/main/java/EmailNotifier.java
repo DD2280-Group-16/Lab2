@@ -47,9 +47,6 @@ public class EmailNotifier {
                 .withSubject("HTML Email Example")
                 .withHTMLText(htmlContent)
                 .buildEmail();
-
-
-        System.out.println("HTML email sent!");
         
         return(performSend(email));
     }
