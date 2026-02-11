@@ -8,6 +8,7 @@ import io.github.cdimascio.dotenv.Dotenv;
 public class Notifier {
     private final Dotenv dotenv = Dotenv.load();
     private final String email_token = dotenv.get("EMAIL_PASS");
+    private final String sender = dotenv.get("SENDER_EMAIL");
 
     private Mailer mailer;
 
@@ -16,7 +17,7 @@ public class Notifier {
                 .withSMTPServer(
                         "smtp.gmail.com",
                         587,
-                        "gront123@gmail.com",
+                        sender,
                         email_token
                 )
                 .buildMailer();
@@ -30,7 +31,7 @@ public class Notifier {
                 "<p>Log URL: " + logURL + "</p>";
 
         Email email = EmailBuilder.startingBlank()
-                .from("Cindy Serving <gront123@gmail.com>")
+                .from("Cindy Serving <" + sender +">")
                 .to(to)
                 .withSubject("HTML Email Example")
                 .withHTMLText(htmlContent)
