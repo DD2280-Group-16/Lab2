@@ -5,10 +5,6 @@ import org.simplejavamail.mailer.MailerBuilder;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-/**
- * Sends email with HTML body to the person who pushed to the branch.
- * Uses SMTP via Gmail.
- */
 public class EmailNotifier {
     private final Dotenv dotenv = Dotenv.load();
     private final String sender = dotenv.get("SENDER_EMAIL");

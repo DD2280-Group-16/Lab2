@@ -3,9 +3,6 @@ package functions;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-/**
- * Clones a specific branch into a temporary folder
- */
 public class BranchCloner {
     
     private final ProcessRunner runner;

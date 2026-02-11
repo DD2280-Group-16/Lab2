@@ -21,7 +21,7 @@ import scripts.MavenTestExecutor;
 
 
 /**
- * ContinuousIntegrationServer is a Jetty HTTP handler that implements a (CI) server for CI
+ * Implements a (CI) server with Jetty
  */
 public class ContinuousIntegrationServer extends AbstractHandler {
     private final Dotenv dotenv = Dotenv.load();
@@ -160,9 +160,6 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }
     }
 
-    /**
-     * Initializes and starts a server on port 8080.
-     */
     public static void main(String[] args) throws Exception {
         Server server = new Server(8080);
         server.setHandler(new ContinuousIntegrationServer());

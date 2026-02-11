@@ -5,9 +5,6 @@ import static java.nio.file.Files.walk;
 import java.nio.file.Path;
 import java.util.Comparator;
 
-/**
- * Removes a temporary directory
- */
 public class DirectoryRemover {
     /**
      * Function that removes a given directory
