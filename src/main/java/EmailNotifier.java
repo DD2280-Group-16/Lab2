@@ -24,7 +24,7 @@ public class EmailNotifier {
 
     }
 
-    public boolean sendNotification(String to, boolean buildStatus, String commitID, String logURL) {
+    public boolean notify(String to, boolean buildStatus, String commitID, String logURL) {
 
         String htmlContent = "<h1>Your results for commit: " + commitID + "</h1>" +
                 "<p>Build status: " + buildStatus + "</p>" +
