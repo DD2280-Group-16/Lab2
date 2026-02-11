@@ -39,11 +39,10 @@ public class EmailNotifier {
                 .withHTMLText(htmlContent)
                 .buildEmail();
 
-        performSend(email);
 
         System.out.println("HTML email sent!");
-
-        return true;
+        
+        return(performSend(email));
     }
 
     protected boolean performSend(Email email) {
