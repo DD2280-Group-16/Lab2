@@ -13,6 +13,9 @@ import static org.mockito.Mockito.when;
 
 class GitHubClientTest {
 
+/**
+ * Tests that the method generates a JSON object with the correct fields when the build is successful
+ */
   @Test
   public void testJsonSuccess() {
     // We pass null because createJsonBody doesn't need the network client
@@ -24,6 +27,9 @@ class GitHubClientTest {
     assertEquals("Build passed", json.getString("description"));
   }
 
+/**
+ * Tests that the method correctly generates a JSON object representing a failed build
+ */
   @Test
   public void testJsonFailure() {
     GitHubNotifier client = new GitHubNotifier(null, "fake_token");
@@ -34,6 +40,11 @@ class GitHubClientTest {
     assertEquals("Build failed", json.getString("description"));
   }
 
+/**
+ * Tests that GitHubNotifier successfully updates the commit status for a 201 status code
+ *
+ * @throws Exception
+ */
   @Test
   public void testUpdateCommitStatusSuccess() throws Exception {
     HttpClient mockClient = mock(HttpClient.class);
@@ -48,6 +59,11 @@ class GitHubClientTest {
     assertTrue(res);
   }
 
+/**
+ * Tests that the GitHubNotifier correctly handles a failure response 
+ * 
+ * @throws Exception 
+ */
   @Test
   public void testUpdateCommitStatusFailure() throws Exception {
     HttpClient mockClient = mock(HttpClient.class);
@@ -62,6 +78,11 @@ class GitHubClientTest {
     assertFalse(res);
   }
 
+/**
+ * Tests that the method returns false for a network failure occurs
+ * 
+ * @throws Exception
+ */
   @Test
   public void testUpdateCommitStatusNetworkFailure() throws Exception {
     HttpClient mockClient = mock(HttpClient.class);
