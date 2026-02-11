@@ -7,15 +7,14 @@ import org.mockito.Mock;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-
 public class EmailNotifierTest {
 
     @Mock
     EmailNotifier emailNotifier;
 
-    @Mock
-    MailerBuilder mailBuilder;
-
+    /**
+     * Tests that sending emails succeeds for correct parameters
+     */
     @Test
     void testEmailSuccess() {
         Mailer mailer = MailerBuilder
@@ -38,6 +37,11 @@ public class EmailNotifierTest {
         verify(notifier, times(1)).performSend(any());
     }
 
+    /**
+     * Tests that sending emails throws exceptions for no email
+     * 
+     * @throws exception
+     */
     @Test
     void testInvalidEmailFailure() {
         Mailer mailer = MailerBuilder
