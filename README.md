@@ -1,2 +1,2 @@
 # Lab2
- for Lab 2 DD2480
+repo for Lab 2 DD2480
