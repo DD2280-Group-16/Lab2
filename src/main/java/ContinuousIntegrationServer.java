@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import scripts.MavenTestExecutor;
 
 public class ContinuousIntegrationServer extends AbstractHandler {
+
     private final Dotenv dotenv = Dotenv.load();
     private final String accessToken = dotenv.get("GITHUB_ACCESS_TOKEN");
     private final HttpClient httpClient = HttpClient.newHttpClient();
@@ -95,10 +97,10 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         DirectoryRemover cleaner = new DirectoryRemover();
         GitHubNotifier gitHubClient = new GitHubNotifier(httpClient, accessToken);
         EmailNotifier emailNotifier = new EmailNotifier();
-        
+
         Path temporaryDir = null;
         String logUrl = "http://localhost:8080/builds/" + parser.commitHash; // TODO: change to ngrok
- 
+
         try {
             // Prepare History Folder
             File buildHistoryDir = new File("build_history/" + parser.commitHash);
@@ -116,17 +118,24 @@ public class ContinuousIntegrationServer extends AbstractHandler {
                 return;
             }
 
+            // Print if cloneSuccess == true.
+            System.out.println("Cloning branch: " + parser.branch + " to temporary directory: " + cloner.getTempDir());
+
             // Create temporary directory for every new request to prevent conflicts
             temporaryDir = cloner.getTempDir();
 
-      //  Run the tests
-      System.out.println("Running tests...");
-      boolean success = MavenTestExecutor.run(temporaryDir.toFile(), logFile);
-
+            //  Run the tests
+            System.out.println("Running tests...");
+            boolean success = MavenTestExecutor.run(temporaryDir.toFile(), logFile);
             System.out.println("Build finished. Status: " + (success ? "SUCCESS" : "FAILURE"));
+
+            System.out.println("Updating Github status");
             gitHubClient.notify(parser.repoName, parser.commitHash, success, logUrl);
 
+
             emailNotifier.notify(parser.pusher, success, parser.commitHash, logUrl);
+            
+
         } catch (Exception e) {
             e.printStackTrace();
             gitHubClient.notify(parser.repoName, parser.commitHash, false, logUrl);

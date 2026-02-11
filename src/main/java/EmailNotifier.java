@@ -39,8 +39,6 @@ public class EmailNotifier {
 
         this.mailer.sendMail(email);
 
-        System.out.println("HTML email sent!");
-
         return true;
     }
 

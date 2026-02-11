@@ -32,11 +32,9 @@ public class GitHubNotifier {
       HttpResponse<String> response =
           this.client.send(request, HttpResponse.BodyHandlers.ofString());
 
-      System.out.println("GitHub status update: " + response.statusCode());
       return response.statusCode() == 201;
 
     } catch (Exception e) {
-      System.err.println("Failed to update GitHub status: " + e.getMessage());
       return false;
     }
   }
