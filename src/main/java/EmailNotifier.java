@@ -6,21 +6,24 @@ import org.simplejavamail.mailer.MailerBuilder;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class EmailNotifier {
-    private final Dotenv dotenv = Dotenv.load();
-    private final String sender = dotenv.get("SENDER_EMAIL");
-    private final String email_token = dotenv.get("EMAIL_PASS");
-
-    private Mailer mailer;
+    private final Mailer mailer;
+    private final String sender;
 
     public EmailNotifier() {
+        Dotenv dotenv = Dotenv.load();
+        this.sender = dotenv.get("SENDER_EMAIL");
         this.mailer = MailerBuilder
                 .withSMTPServer(
                         "smtp.gmail.com",
                         587,
                         sender,
-                        email_token)
+                        dotenv.get("EMAIL_PASS"))
                 .buildMailer();
+    }
 
+    public EmailNotifier(String sender, Mailer mail) {
+        this.sender = sender;
+        this.mailer = mail;
     }
 
     public boolean notify(String to, boolean buildStatus, String commitID, String logURL) {
