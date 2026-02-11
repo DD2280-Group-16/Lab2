@@ -19,11 +19,25 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import scripts.MavenTestExecutor;
 
+
+/**
+ * Implements a (CI) server with Jetty
+ */
 public class ContinuousIntegrationServer extends AbstractHandler {
     private final Dotenv dotenv = Dotenv.load();
     private final String accessToken = dotenv.get("GITHUB_ACCESS_TOKEN");
     private final HttpClient httpClient = HttpClient.newHttpClient();
 
+    /**
+     * Handles incoming HTTP requests for the Continuous Integration Server.
+     *
+     * @param target the target URL path of the request
+     * @param baseRequest the Jetty base request object
+     * @param request the servlet request object
+     * @param response the servlet response object
+     * @throws IOException if an input or output error occurs
+     * @throws ServletException if a servlet error occurs
+     */
     public void handle(
             String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
@@ -89,6 +103,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }
     }
 
+    /**
+     * Processes a build request by cloning the specified branch, running tests, and notifying
+     *
+     * @param parser The PayloadParser containing repository and commit information
+     */
     private void processBuild(PayloadParser parser) {
         DefaultProcessRunner runner = new DefaultProcessRunner();
         BranchCloner cloner = new BranchCloner(runner);
