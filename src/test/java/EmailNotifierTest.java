@@ -16,6 +16,9 @@ public class EmailNotifierTest {
     @Mock
     EmailNotifier emailNotifier;
 
+    /**
+     * Tests that sending emails succeeds for correct parameters
+     */
     @Test
     void testEmailSuccess() {
         EmailNotifier notifier = spy(new EmailNotifier());
@@ -30,6 +33,10 @@ public class EmailNotifierTest {
         verify(notifier, times(1)).performSend(any());
     }
 
+    /**
+     * Tests that sending emails throws exceptions for no email
+     * @throws exception
+     */
     @Test
     void testInvalidEmailFailure() {
         EmailNotifier notifier = spy(new EmailNotifier());

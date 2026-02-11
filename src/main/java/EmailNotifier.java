@@ -5,6 +5,10 @@ import org.simplejavamail.mailer.MailerBuilder;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * Sends email with HTML body to the person who pushed to the branch.
+ * Uses SMTP via Gmail.
+ */
 public class EmailNotifier {
     private final Dotenv dotenv = Dotenv.load();
     private final String sender = dotenv.get("SENDER_EMAIL");
@@ -23,6 +27,15 @@ public class EmailNotifier {
 
     }
 
+    /**
+     * Sends an HTML email notification to the pusher with results
+     *
+     * @param to         the pushers email address
+     * @param buildStatus the status of the build (true for success, false for failure)
+     * @param commitID   the identifier of the commit related to the build
+     * @param logURL     the URL to the build log
+     * @return           true if the email was sent successfully
+     */
     public boolean notify(String to, boolean buildStatus, String commitID, String logURL) {
 
         String htmlContent = "<h1>Your results for commit: " + commitID + "</h1>" +
@@ -43,6 +56,12 @@ public class EmailNotifier {
         return true;
     }
 
+    /**
+     * Attempts to send the specified email using the mailer
+     * 
+     * @param email the Email object to be sent
+     * @return true if the email was sent successfully; false if an IllegalArgumentException occurred
+     */
     protected boolean performSend(Email email) {
         try {
             this.mailer.sendMail(email);
