@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
-import scripts.Script;
+import scripts.MavenTestExecutor;
 
 public class ContinuousIntegrationServer extends AbstractHandler {
     private final Dotenv dotenv = Dotenv.load();
@@ -118,8 +118,8 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             temporaryDir = cloner.getTempDir();
 
       //  Run the tests
-            System.out.println("Running tests...");
-            boolean success = Script.run(temporaryDir.toFile(), "test", logFile);
+      System.out.println("Running tests...");
+      boolean success = MavenTestExecutor.run(temporaryDir.toFile(), logFile);
 
             System.out.println("Build finished. Status: " + (success ? "SUCCESS" : "FAILURE"));
             gitHubClient.notify(parser.repoName, parser.commitHash, success, logUrl);
