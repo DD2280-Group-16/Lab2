@@ -18,8 +18,7 @@ public class EmailNotifier {
                         "smtp.gmail.com",
                         587,
                         sender,
-                        email_token
-                )
+                        email_token)
                 .buildMailer();
 
     }
@@ -31,17 +30,26 @@ public class EmailNotifier {
                 "<p>Log URL: " + logURL + "</p>";
 
         Email email = EmailBuilder.startingBlank()
-                .from("Cindy Serving <" + sender +">")
+                .from("Cindy Serving <" + sender + ">")
                 .to(to)
                 .withSubject("HTML Email Example")
                 .withHTMLText(htmlContent)
                 .buildEmail();
 
-        this.mailer.sendMail(email);
+        performSend(email);
 
         System.out.println("HTML email sent!");
 
         return true;
+    }
+
+    protected boolean performSend(Email email) {
+        try {
+            this.mailer.sendMail(email);
+            return true;
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
 }
