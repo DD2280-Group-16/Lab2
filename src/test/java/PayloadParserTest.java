@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 public class PayloadParserTest {
     /**
      * Test that verifies that the parser grabs the correct information.
+     * Uses Mockito to mock ServletInputStream and HttpServletRequest
      * @throws Exception
      */
     @Test
