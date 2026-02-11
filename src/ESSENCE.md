@@ -55,4 +55,4 @@
 
 ### The Group's Current State
 
-We'd say that the current state we are in are trying to complte is the Performing State. More specifically, the requirement regarding achieving effective progress with minimal backtracking and reworking as it is something that we have observed is done quite a bit, especially nearing the submission date. In order to reach the next state, or in our case completing the Performing State in our opinion can only be done through experience. The more familiar we are with the environment we are working in, the less chances are for reworking and backtracking.
+We'd say that the current state we are in and currently trying to complete is the Performing State. More specifically, the requirement regarding achieving effective progress with minimal backtracking and reworking; as it is something that we have observed is done quite a bit, especially nearing the submission date. In order to reach the next state, or in our case completing the Performing State, in our opinion can only be done through experience. The more familiar we are with the environment we are working in, the less chances are for reworking and backtracking.
