@@ -23,7 +23,6 @@ public class BranchCloner {
         dir = null;
         try {
             dir = Files.createTempDirectory("branch-clone-");
-            System.out.println("Cloning branch: " + branch + " to temporary directory: " + dir);
             int exitCode = runner.run(dir ,"git", "clone", "-b", branch, "--single-branch", url, ".");
 
             return exitCode == 0;
