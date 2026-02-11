@@ -1,27 +1,32 @@
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-
+import org.simplejavamail.api.mailer.Mailer;
+import org.simplejavamail.mailer.MailerBuilder;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-import java.net.http.HttpClient;
-import java.net.http.HttpResponse;
 
 public class EmailNotifierTest {
 
     @Mock
     EmailNotifier emailNotifier;
 
-    /**
-     * Tests that sending emails succeeds for correct parameters
-     */
+    @Mock
+    MailerBuilder mailBuilder;
+
     @Test
     void testEmailSuccess() {
-        EmailNotifier notifier = spy(new EmailNotifier());
+        Mailer mailer = MailerBuilder
+                .withSMTPServer(
+                        "smtp.gmail.com",
+                        587,
+                        "sender@example.com",
+                        "123")
+                .buildMailer();
+
+        EmailNotifier notifier = spy(new EmailNotifier("sender@example.com", mailer));
 
         doReturn(true).when(notifier).performSend(any());
 
@@ -33,13 +38,17 @@ public class EmailNotifierTest {
         verify(notifier, times(1)).performSend(any());
     }
 
-    /**
-     * Tests that sending emails throws exceptions for no email
-     * @throws exception
-     */
     @Test
     void testInvalidEmailFailure() {
-        EmailNotifier notifier = spy(new EmailNotifier());
+        Mailer mailer = MailerBuilder
+                .withSMTPServer(
+                        "smtp.gmail.com",
+                        587,
+                        "sender@example.com",
+                        "123")
+                .buildMailer();
+
+        EmailNotifier notifier = spy(new EmailNotifier("sender@example.com", mailer));
 
         doThrow(IllegalArgumentException.class).when(notifier).performSend(any());
 
