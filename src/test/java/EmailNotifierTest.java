@@ -7,16 +7,10 @@ import org.mockito.Mock;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-/**
- * Tests that sending emails succeeds for correct parameters
- */
 public class EmailNotifierTest {
 
     @Mock
     EmailNotifier emailNotifier;
-
-    @Mock
-    MailerBuilder mailBuilder;
 
     /**
      * Tests that sending emails succeeds for correct parameters
