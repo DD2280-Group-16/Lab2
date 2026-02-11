@@ -116,7 +116,7 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         EmailNotifier emailNotifier = new EmailNotifier();
         
         Path temporaryDir = null;
-        String logUrl = "http://localhost:8080/builds/" + parser.commitHash; // TODO: change to ngrok
+        String logUrl = "http://https://nonnoumenal-hyo-unorbed.ngrok-free.dev/builds/" + parser.commitHash; 
  
         try {
             // Prepare History Folder
