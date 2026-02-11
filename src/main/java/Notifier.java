@@ -7,8 +7,8 @@ import io.github.cdimascio.dotenv.Dotenv;
 
 public class Notifier {
     private final Dotenv dotenv = Dotenv.load();
-    private final String email_token = dotenv.get("EMAIL_PASS");
     private final String sender = dotenv.get("SENDER_EMAIL");
+    private final String email_token = dotenv.get("EMAIL_PASS");
 
     private Mailer mailer;
 
