@@ -9,9 +9,9 @@ import java.util.List;
  * Runs Maven (mvnw) in a project root. Give it the project root File and "test" it (compiles and runs the test).
  * Builds the right command (Windows vs other OS) and runs it.
  */
-public final class MavenTestScript {
+public final class MavenTestExecutor {
 
-  private MavenTestScript() {}
+  private MavenTestExecutor() {}
 
   /**
    * Runs Maven in the project root to run test.
