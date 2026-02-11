@@ -1,5 +1,4 @@
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 
 public class NotifierTest {
@@ -7,9 +6,9 @@ public class NotifierTest {
       @Test
   void emailIsTrue() {
 
-    Notifier notifier = new Notifier();
+    EmailNotifier notifier = new EmailNotifier();
 
-    assertTrue(notifier.sendNotification("INPUT EMAIL", false, null, null));
+    assertTrue(notifier.notify("INPUT EMAIL", false, null, null));
   }
     
 }

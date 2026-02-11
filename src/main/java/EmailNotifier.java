@@ -5,14 +5,14 @@ import org.simplejavamail.mailer.MailerBuilder;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
-public class Notifier {
+public class EmailNotifier {
     private final Dotenv dotenv = Dotenv.load();
     private final String sender = dotenv.get("SENDER_EMAIL");
     private final String email_token = dotenv.get("EMAIL_PASS");
 
     private Mailer mailer;
 
-    public Notifier() {
+    public EmailNotifier() {
         this.mailer = MailerBuilder
                 .withSMTPServer(
                         "smtp.gmail.com",
@@ -24,7 +24,7 @@ public class Notifier {
 
     }
 
-    public boolean sendNotification(String to, boolean buildStatus, String commitID, String logURL) {
+    public boolean notify(String to, boolean buildStatus, String commitID, String logURL) {
 
         String htmlContent = "<h1>Your results for commit: " + commitID + "</h1>" +
                 "<p>Build status: " + buildStatus + "</p>" +

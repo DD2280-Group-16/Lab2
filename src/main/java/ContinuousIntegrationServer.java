@@ -1,10 +1,3 @@
-import functions.BranchCloner;
-import functions.DefaultProcessRunner;
-import functions.DirectoryRemover;
-import io.github.cdimascio.dotenv.Dotenv;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -12,9 +5,18 @@ import java.net.http.HttpClient;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
+
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+
+import functions.BranchCloner;
+import functions.DefaultProcessRunner;
+import functions.DirectoryRemover;
+import io.github.cdimascio.dotenv.Dotenv;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import scripts.MavenTestExecutor;
 
 public class ContinuousIntegrationServer extends AbstractHandler {
@@ -91,8 +93,8 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         DefaultProcessRunner runner = new DefaultProcessRunner();
         BranchCloner cloner = new BranchCloner(runner);
         DirectoryRemover cleaner = new DirectoryRemover();
-        GitHubClient gitHubClient = new GitHubClient(httpClient, accessToken);
-        Notifier emailNotifier = new Notifier();
+        GitHubNotifier gitHubClient = new GitHubNotifier(httpClient, accessToken);
+        EmailNotifier emailNotifier = new EmailNotifier();
         
         Path temporaryDir = null;
         String logUrl = "http://localhost:8080/builds/" + parser.commitHash; // TODO: change to ngrok
@@ -124,11 +126,11 @@ public class ContinuousIntegrationServer extends AbstractHandler {
             System.out.println("Build finished. Status: " + (success ? "SUCCESS" : "FAILURE"));
             gitHubClient.notify(parser.repoName, parser.commitHash, success, logUrl);
 
-            emailNotifier.sendNotification(parser.pusher, success, parser.commitHash, logUrl);
+            emailNotifier.notify(parser.pusher, success, parser.commitHash, logUrl);
         } catch (Exception e) {
             e.printStackTrace();
             gitHubClient.notify(parser.repoName, parser.commitHash, false, logUrl);
-            emailNotifier.sendNotification(parser.pusher, false, parser.commitHash, logUrl);
+            emailNotifier.notify(parser.pusher, false, parser.commitHash, logUrl);
 
         } finally {
             // Clean the disk

@@ -1,18 +1,22 @@
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpResponse;
+
 import org.json.JSONObject;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 class GitHubClientTest {
 
   @Test
   public void testJsonSuccess() {
     // We pass null because createJsonBody doesn't need the network client
-    GitHubClient client = new GitHubClient(null, "fake_token");
+    GitHubNotifier client = new GitHubNotifier(null, "fake_token");
 
     JSONObject json = client.createJsonBody(true, "fake_url");
 
@@ -22,7 +26,7 @@ class GitHubClientTest {
 
   @Test
   public void testJsonFailure() {
-    GitHubClient client = new GitHubClient(null, "fake_token");
+    GitHubNotifier client = new GitHubNotifier(null, "fake_token");
 
     JSONObject json = client.createJsonBody(false, "fake_url");
 
@@ -38,7 +42,7 @@ class GitHubClientTest {
     when(mockResponse.statusCode()).thenReturn(201);
     when(mockClient.send(any(), any(HttpResponse.BodyHandler.class))).thenReturn(mockResponse);
 
-    GitHubClient client = new GitHubClient(mockClient, "fake_token");
+    GitHubNotifier client = new GitHubNotifier(mockClient, "fake_token");
 
     boolean res = client.notify("repoName", "123", true, "fake_url");
     assertTrue(res);
@@ -52,7 +56,7 @@ class GitHubClientTest {
     when(mockResponse.statusCode()).thenReturn(404);
     when(mockClient.send(any(), any(HttpResponse.BodyHandler.class))).thenReturn(mockResponse);
 
-    GitHubClient client = new GitHubClient(mockClient, "fake_token");
+    GitHubNotifier client = new GitHubNotifier(mockClient, "fake_token");
 
     boolean res = client.notify("repoName", "123", false, "fake_url");
     assertFalse(res);
@@ -65,7 +69,7 @@ class GitHubClientTest {
     when(mockClient.send(any(), any(HttpResponse.BodyHandler.class)))
         .thenThrow(new IOException("Network error"));
 
-    GitHubClient client = new GitHubClient(mockClient, "fake_token");
+    GitHubNotifier client = new GitHubNotifier(mockClient, "fake_token");
 
     boolean res = client.notify("repoName", "123", false, "fake_url");
     assertFalse(res);
