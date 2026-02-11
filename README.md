@@ -67,6 +67,49 @@ You can then push files to github and the server will update the commit status a
 
 To get the build history you can visit http://localhost:8080/builds
 
-## Statement of contributions
+## Implementation
 
-*TO BE FILLED* 
+### Notifications
+
+#### GitHub
+
+Notifications to GitHub are sent by calling the GitHub API with a JSON object containing information from the build process. Once a build is complete, its status is reported via the `notify` function in the `GitHubClient` class. It passes the build status as the GitHub state and the URL of the build log for the "details" link.
+
+#### Email 
+
+Email notifications use the Gmail SMTP server. Notifications are sent to the email address of the person responsible for pushing to the repository. The email includes the build result, the specific commit SHA and a link to the build log. This is implemented in the `EmailNotifier` class.
+
+> [!IMPORTANT]
+> Users must disable "Keep my email addresses private" in their GitHub settings to be able to receive these emails.
+
+## Statement of Contributions
+
+**Oskar**
+* `GitHubNotifier`
+* Server flow 
+* Frontend for persistent build logs 
+* Project chores (dependencies, `.gitignore`, `.editorconfig`)
+
+**Elin**
+* `EmailNotifier`
+* Notification section of README 
+* Class and function documentation
+
+**Ben**
+* JSON Parsing
+* Code refactoring
+* ESSENCE file
+
+**Ali**
+* `MavenTestExecutor` 
+* README 
+* Code refactoring 
+* Test fixes 
+
+**Markus**
+* `BranchCloner`
+* `DefaultProcessRunner`
+* `ProcessRunner`
+* `DirectoryRemover`
+* `PayloadParser`
+* Code refactoring
