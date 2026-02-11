@@ -9,7 +9,7 @@ public class NotifierTest {
 
     Notifier notifier = new Notifier();
 
-    assertTrue(notifier.sendNotification("elin.s.m.andersson@gmail.com", false, null, null));
+    assertTrue(notifier.sendNotification("INPUT EMAIL", false, null, null));
   }
     
 }
