@@ -42,8 +42,7 @@ public class EmailNotifierTest {
 
     /**
      * Tests that sending emails throws exceptions for no email
-     * 
-     * @throws exception
+     *
      */
     @Test
     void testInvalidEmailFailure() {
