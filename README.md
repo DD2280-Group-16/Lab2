@@ -74,7 +74,7 @@ Run the main class `ContinuousIntegrationServer` from your IDE, or with maven:
 The server listens on port 8080. 
 You can then push files to github and the server will update the commit status according to the tests.
 
-To get the build history you can visit http://https://nonnoumenal-hyo-unorbed.ngrok-free.dev/builds/
+To get the build history you can visit https://nonnoumenal-hyo-unorbed.ngrok-free.dev/builds/
 
 ### 4. API documentation (Javadoc)
 
