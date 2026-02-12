@@ -11,6 +11,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * Tests for {@link GitHubNotifier}: JSON body for success/failure, and notify on 201 vs other status or network error.
+ */
 class GitHubClientTest {
 
 /**

@@ -14,6 +14,9 @@ import static org.mockito.Mockito.verify;
 import functions.BranchCloner;
 import functions.ProcessRunner;
 
+/**
+ * Tests for {@link BranchCloner}: clone success/failure, correct git args, temp dir, empty inputs.
+ */
 public class BranchClonerTest {
     /**
      * Test that controls if cloneBranch returns true on successful cloning
@@ -23,7 +26,7 @@ public class BranchClonerTest {
     void cloneBranchReturnTrueWhenCloningSucceeds() throws Exception {
 
         ProcessRunner runner = mock(ProcessRunner.class);
-        
+
         String[] expectedCmd = {"git", "clone", "-b", "main", "--single-branch", "https://example.com/repo.git", "."};
         doReturn(0).when(runner).run(any(Path.class), aryEq(expectedCmd));
 
@@ -42,7 +45,7 @@ public class BranchClonerTest {
     @Test
     void cloneBranchUsesTheCorrectArguments() throws Exception {
         ProcessRunner runner = mock(ProcessRunner.class);
-        
+
         String[] expectedCmd = {"git", "clone", "-b", "main", "--single-branch", "https://example.com/repo.git", "."};
         doReturn(0).when(runner).run(any(Path.class), aryEq(expectedCmd));
         BranchCloner cloner = new BranchCloner(runner);
@@ -58,7 +61,7 @@ public class BranchClonerTest {
     void cloneBranchReturnFalseWhenCloningFails() throws Exception {
 
         ProcessRunner runner = mock(ProcessRunner.class);
-        
+
         String[] expectedCmd = {"git", "clone", "-b", "main", "--single-branch", "https://example.com/repo.git", "."};
         doReturn(128).when(runner).run(any(Path.class), aryEq(expectedCmd));
 
@@ -77,7 +80,7 @@ public class BranchClonerTest {
     void cloneBranchCreatesATempDir() throws Exception {
 
         ProcessRunner runner = mock(ProcessRunner.class);
-        
+
         String[] expectedCmd = {"git", "clone", "-b", "main", "--single-branch", "https://example.com/repo.git", "."};
         doReturn(0).when(runner).run(any(Path.class), aryEq(expectedCmd));
 
@@ -89,7 +92,7 @@ public class BranchClonerTest {
     }
 
     /**
-     * Test that verify that cloneBranch returns false om empty arguments
+     * Test that verify that cloneBranch returns false on empty arguments
      * @throws Exception
      */
     @Test

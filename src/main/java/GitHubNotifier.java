@@ -12,6 +12,12 @@ public class GitHubNotifier {
   private HttpClient client;
   private final String accessToken;
 
+  /**
+   * Builds a notifier that uses the given HTTP client and token to call the GitHub API.
+   *
+   * @param client      the HTTP client used to send requests
+   * @param accessToken the GitHub token for authentication
+   */
   public GitHubNotifier(HttpClient client, String accessToken) {
     this.client = client;
     this.accessToken = accessToken;

@@ -76,6 +76,11 @@ You can then push files to github and the server will update the commit status a
 
 To get the build history you can visit http://https://nonnoumenal-hyo-unorbed.ngrok-free.dev/builds/
 
+### 4. API documentation (Javadoc)
+
+Generate the browsable API docs with `./mvnw javadoc:javadoc`.
+Open **`target/site/apidocs/index.html`** in a browser to view it.
+    
 ## Implementation
 
 Compilation, test execution and notifications are triggered by webhook (POST). The branch to build is taken from the HTTP payload (`ref` field). The flow is: parse payload -> clone that branch -> compile & run tests -> notify.

@@ -5,6 +5,9 @@ import static java.nio.file.Files.walk;
 import java.nio.file.Path;
 import java.util.Comparator;
 
+/**
+ * Deletes a directory and all its contents. Used to clean the temp clone after a build.
+ */
 public class DirectoryRemover {
     /**
      * Function that removes a given directory

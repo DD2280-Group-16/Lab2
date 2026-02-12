@@ -5,10 +5,16 @@ import org.simplejavamail.mailer.MailerBuilder;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
+/**
+ * Sends an email to the pusher with the build result and a link to the log.
+ */
 public class EmailNotifier {
     private final Mailer mailer;
     private final String sender;
 
+    /**
+     * Builds a notifier using SENDER_EMAIL and EMAIL_PASS from the .env file.
+     */
     public EmailNotifier() {
         Dotenv dotenv = Dotenv.load();
         this.sender = dotenv.get("SENDER_EMAIL");
@@ -21,6 +27,12 @@ public class EmailNotifier {
                 .buildMailer();
     }
 
+    /**
+     * Builds a notifier with a custom sender and mailer (for tests).
+     *
+     * @param sender the sender email address
+     * @param mail   the mailer used to send emails
+     */
     public EmailNotifier(String sender, Mailer mail) {
         this.sender = sender;
         this.mailer = mail;

@@ -169,6 +169,12 @@ public class ContinuousIntegrationServer extends AbstractHandler {
         }
     }
 
+    /**
+     * Starts the CI server on port 8080. Handles webhooks and serves build history.
+     *
+     * @param args not used
+     * @throws Exception if the server fails to start
+     */
     public static void main(String[] args) throws Exception {
         Server server = new Server(8080);
         server.setHandler(new ContinuousIntegrationServer());

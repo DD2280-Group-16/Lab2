@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import functions.DirectoryRemover;
 
+/**
+ * Tests for {@link DirectoryRemover}: deleteDirectory removes a dir and its contents, returns false when dir does not exist.
+ */
 public class DirectoryRemoverTest {
     /**
      * Test that controls that deleteDirectory removes the given directory.

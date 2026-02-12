@@ -14,6 +14,9 @@ import org.junit.jupiter.api.io.TempDir;
 
 import scripts.MavenTestExecutor;
 
+/**
+ * Tests for {@link MavenTestExecutor}: run returns false when no mvnw, or true on a minimal passing project.
+ */
 public class MavenTestExecutorTest {
 
   /**
@@ -57,7 +60,7 @@ public class MavenTestExecutorTest {
 
   /**
    * Test that run returns true when given a minimal Maven project with a passing test.
-   * Creates a fakeRepo: pom.xml, mvnw, and one test that does assertTrue(true).
+   * Creates a fakeRepo: pom.xml, mvnw, and one test trivial test assertTrue(true).
    */
   @Test
   void runReturnsTrueWhenSampleProjectHasPassingTest(@TempDir Path tempDir)

@@ -1,6 +1,9 @@
 import org.json.JSONException;
 import org.json.JSONObject;
 
+/**
+ * Parser for the JSON body of a GitHub webhook and extracts branch, repo, commit and pusher info.
+ */
 public class PayloadParser {
     public final String sshUrl;
     public final String repoName;
