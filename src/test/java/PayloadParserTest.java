@@ -2,6 +2,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for {@link PayloadParser}: parsing branch, repo, commit and pusher from a GitHub webhook body.
+ */
 public class PayloadParserTest {
     /**
      * Test that verifies that the parser grabs the correct information.

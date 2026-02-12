@@ -7,6 +7,9 @@ import org.mockito.Mock;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
+/**
+ * Tests for {@link EmailNotifier}: notify succeeds with valid params, handles invalid email.
+ */
 public class EmailNotifierTest {
 
     @Mock
