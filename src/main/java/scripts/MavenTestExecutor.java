@@ -2,6 +2,8 @@ package scripts;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +26,10 @@ public final class MavenTestExecutor {
     List<String> cmd = buildCmd();
     try {
       ProcessBuilder pb = new ProcessBuilder(cmd);
+      Path mvnCmd = projectRoot.toPath().resolve(cmd.get(0));
+      if(!Files.exists(mvnCmd)){
+        return false;
+      }
       pb.directory(projectRoot);
       // Save logs to file
       if (logFile != null) {
@@ -36,7 +42,7 @@ public final class MavenTestExecutor {
       int exitCode = process.waitFor();
       return exitCode == 0;
     } catch (Exception e) {
-      e.printStackTrace();
+      //e.printStackTrace();
       return false;
     }
   }
