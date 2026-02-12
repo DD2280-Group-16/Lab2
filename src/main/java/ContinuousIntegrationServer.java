@@ -170,13 +170,13 @@ public class ContinuousIntegrationServer extends AbstractHandler {
     }
 
     /**
-     * Starts the CI server on port 8080. Handles webhooks and serves build history.
+     * Starts the CI server on port 8016. Handles webhooks and serves build history.
      *
      * @param args not used
      * @throws Exception if the server fails to start
      */
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8080);
+        Server server = new Server(8016);
         server.setHandler(new ContinuousIntegrationServer());
         server.start();
         server.join();
